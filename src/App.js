@@ -23,7 +23,7 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser, collectionsArray } = this.props;
+    const { setCurrentUser} = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth) {
@@ -37,7 +37,6 @@ class App extends Component {
         });
       } else {
         setCurrentUser(userAuth);
-        addCollectionAndDocuments('collections', collectionsArray.map(({title, items}) => ({ title, items })));
       }
     });
   }
@@ -73,7 +72,6 @@ class App extends Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  collectionsArray: selectCollectionsForPreview,
 
 })
 
