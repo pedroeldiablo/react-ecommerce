@@ -29,7 +29,7 @@ export function* fetchCollectionsStart() {
     );
 }
 
-export default function* shopSaga() {
+export function* shopSagas() {
     yield all([
         call(fetchCollectionsStart),
     ]);
