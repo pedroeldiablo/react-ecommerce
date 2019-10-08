@@ -15,7 +15,7 @@ const StripeCheckoutButton = ({ price }) => {
                token
            }
        }).then(response => {
-           alert('Payment Successful')
+           alert('Payment Accepted Successfully')
        }).catch(error => {
            console.log('Payment error: ', JSON.parse(error));
            alert(
