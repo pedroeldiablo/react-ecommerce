@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
-
-export const MenuItemContainer = styled.div` {
+export const MenuItemContainer = styled.div`
     min-width: 30%;
     height: ${({ size }) => ( size ? '340px' : '240px')};
     flex: 1 1 auto;
@@ -13,7 +11,6 @@ export const MenuItemContainer = styled.div` {
     margin: 0 7.5px 15px;
     overflow: hidden;
     
-
     &.large {
       height: 380px;
     }
@@ -81,4 +78,4 @@ export const MenuItemContainer = styled.div` {
             margin: 10px;
         }
     }
-  }`;
+  `;

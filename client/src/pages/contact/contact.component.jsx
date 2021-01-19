@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import SimpleSlider from '../../components/simple-slider/simple-slider.component';
 
