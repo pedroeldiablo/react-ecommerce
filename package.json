@@ -6,6 +6,7 @@
     "npm": "6.10.2"
   },
   "scripts": {
+    "test": "jest",
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
     "build": "cd client && npm run build",

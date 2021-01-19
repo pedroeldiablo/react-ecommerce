@@ -7,7 +7,7 @@ import Spinner from '../../components/spinner/spinner.component';
 import { fetchCollectionsStart } from '../../redux/shop/shop.actions';
 
 const CollectionsOverviewContainer = lazy(() => import('../../components/collections-overview/collections-overview.container'));
-const CollectionPageContainer = lazy(() => import('../collection/colllection.container'));
+const CollectionPageContainer = lazy(() => import('../collection/collection.container'));
 
 const ShopPage = ({ fetchCollectionsStart, match }) => {
   useEffect(() => {
