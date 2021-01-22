@@ -11,13 +11,15 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middleWares = [sagaMiddleware];
 
+const composeEnhancers = composeWithDevTools( {trace: true});
+
 if(process.env.NODE_ENV === 'development') {
     middleWares.push(logger);
 }
 
-export const store = createStore(rootReducer,  composeWithDevTools(
-    applyMiddleware(...middleWares),
-    // other store enhancers if any
+export const store = createStore(rootReducer,  composeEnhancers(
+  applyMiddleware(...middleWares),
+   // other store enhancers if any
   ));
 
 sagaMiddleware.run(rootSaga);
