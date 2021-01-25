@@ -6,12 +6,12 @@ import { fetchProductSuccess, fetchProductFailure, } from './product.actions';
 
 import ProductActionTypes from './product.types';
 
-export function* fetchProductAsync(productId){
-     console.log("What is productId", productId);
+export function* fetchProductAsync({payload}){
+     console.log("What is productId", payload);
     //  const productIdn = "sykk7rzEw3FxidbFUh4Q";
    
     try {
-        const productRef = firestore.collection('products').doc(productId.payload);
+        const productRef = firestore.collection('products').doc(payload);
         console.log("productRef", productRef);
         const snapshot = yield productRef.get()
         yield put(fetchProductSuccess(snapshot));

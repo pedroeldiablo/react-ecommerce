@@ -15,24 +15,28 @@ import { fetchProductStart } from '../../redux/product/product.actions';
 const ProductDetailsPage = ({fetchProductStart, ...props}) => {
   // let { id } = useParams();
   // console.log("what is returned from this useParams?", id);
-   
+  const productId = props.match.params.productId;
     
   useEffect(() => {
     console.log("What are the props", props);
     console.log("props.match.params.productId", props.match.params.productId)
 
-    const productId = props.match.params.productId;
+   
     console.log({productId})
     fetchProductStart(productId);
     // console.log("Quelle?", fetchProductStart())
     
-  }, [fetchProductStart, props]);
-// console.log("What are the props", props);
+  }, [fetchProductStart, productId]);
+console.log("What are the props.product", props.product);
     return (
         <>
         <div>Hi you've reached a pdp</div>
         <div>{props.match.params.productId}</div>
-        {/* <div>{fields.name}</div> */}
+      
+        <div>Product Id from product {props.product.product ? props.product.product._document.proto.fields.name.stringValue : null }</div> 
+        <div>Product Id from product {props.product.product ? props.product.product._document.proto.fields.style.stringValue : null }</div> 
+        <div>Product Id from product {props.product.product ? props.product.product._document.proto.fields.price.integerValue : null }</div> 
+        <img src={props?.product?.product?._document?.proto?.fields?.imageUrl?.stringValue ? props.product.product._document.proto.fields.imageUrl.stringValue : null } ></img>
         </>
      
         // <div className='shop-page'>
@@ -61,13 +65,25 @@ const ProductDetailsPage = ({fetchProductStart, ...props}) => {
 //   return { product }
 // }
 
+const mapStateToProps = state => {
+  return {
+    product: state.product
+  };
+};
+
 const mapDispatchToProps = dispatch => ({
   fetchProductStart: (productId) => dispatch(fetchProductStart({productId}))
 
 });
 
+
+// const  mapStateToProps = (state) => {
+//   const { product } = state
+//   return { product};
+// }
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ProductDetailsPage);
 
