@@ -32,11 +32,20 @@ console.log("What are the props.product", props.product);
         <>
         <div>Hi you've reached a pdp</div>
         <div>{props.match.params.productId}</div>
-      
+
+       { props?.product?.product?.exists ? 
+        <>
         <div>Product Id from product {props.product.product ? props.product.product._document.proto.fields.name.stringValue : null }</div> 
         <div>Product Id from product {props.product.product ? props.product.product._document.proto.fields.style.stringValue : null }</div> 
         <div>Product Id from product {props.product.product ? props.product.product._document.proto.fields.price.integerValue : null }</div> 
         <img src={props?.product?.product?._document?.proto?.fields?.imageUrl?.stringValue ? props.product.product._document.proto.fields.imageUrl.stringValue : null } ></img>
+        </>
+        :
+        <div>Nothing to see here</div>
+
+       }
+
+        
         </>
      
         // <div className='shop-page'>
