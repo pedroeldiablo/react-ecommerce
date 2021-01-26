@@ -9,7 +9,7 @@ import { signOutStart } from '../../redux/user/user.actions';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-import { ReactComponent as Logo } from '../../assets/crown.svg';
+import { ReactComponent as Logo } from '../../assets/cmyk.svg';
 import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink } from './header.styles';
 
 const Header = ({currentUser, hidden, signOutStart }) =>  (
