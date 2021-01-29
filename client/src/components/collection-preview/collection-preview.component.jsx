@@ -1,5 +1,6 @@
 import React from 'react';
 import CollectionItem from '../collection-item/collection-item.component';
+import CollectionCarousel from '../collection-carousel/collection-carousel.component';
 
 import './collection-preview.styles.scss';
 
@@ -15,6 +16,7 @@ const CollectionPreview = ({ title, items, id }) => (
         ))
         }
         </div>
+        <CollectionCarousel items={items}></CollectionCarousel>
     </div>
 )
 
