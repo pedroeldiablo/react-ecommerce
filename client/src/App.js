@@ -2,6 +2,8 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { AnimatePresence } from "framer-motion";
+
 
 import Header from './components/header/header.component';
 import Spinner from './components/spinner/spinner.component';
@@ -28,28 +30,38 @@ const App = ({ checkUserSession, currentUser }) => {
   
     return (
       <div className="App">
+
         <GlobalStyle />
         <Header />
-        <Switch>
-          <ErrorBoundary>
-            <Suspense fallback={<Spinner />}>
-              <Route exact path="/" component={HomePage} />
-              <Route path="/shop" component={ShopPage} />
-              <Route exact path="/checkout" component={CheckoutPage} />
-              <Route exact path="/contact" component={ContactPage} />
-              <Route exact path="/product/:productId" component={ProductDetailsPage} />
-              <Route 
-              exact 
-              path='/signin' 
-              render={() => 
-              currentUser ? 
-                ( <Redirect to='/' /> ) :
-                ( <SignInAndSignUpPage />)
-              }
-              />
-            </Suspense>
-           </ErrorBoundary>
-        </Switch>
+        {/* <AnimatePresence initial={false} exitBeforeEnter> */}
+        <Route
+        render={({ location }) => (
+          <AnimatePresence initial={false} exitBeforeEnter>
+            <Switch location={location} key={location.pathname}>
+              {/* <Switch> */}
+                <ErrorBoundary>
+                  <Suspense fallback={<Spinner />}>
+                    <Route exact path="/" component={HomePage} />
+                    <Route path="/shop" component={ShopPage} />
+                    <Route exact path="/checkout" component={CheckoutPage} />
+                    <Route exact path="/contact" component={ContactPage} />
+                    <Route exact path="/product/:productId" component={ProductDetailsPage} />
+                    <Route 
+                    exact 
+                    path='/signin' 
+                    render={() => 
+                    currentUser ? 
+                      ( <Redirect to='/' /> ) :
+                      ( <SignInAndSignUpPage />)
+                    }
+                    />
+                  </Suspense>
+                </ErrorBoundary>
+              </Switch>
+              </AnimatePresence>
+        )}
+      />
+        {/* </AnimatePresence> */}
       </div>
     );
 }

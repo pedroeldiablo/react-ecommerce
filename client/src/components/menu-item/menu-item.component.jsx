@@ -5,7 +5,7 @@ import { MenuItemContainer } from './menu-item.styles';
 
 
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match, index }) => (
-    <MenuItemContainer onClick={() => history.push(`${match.url}${linkUrl}`)}>
+    <MenuItemContainer className="framed" onClick={() => history.push(`${match.url}${linkUrl}`)}>
         <div 
             className={`background-image item-${index}`} style={{ 
             backgroundImage: `url(${imageUrl})` }}
