@@ -1,13 +1,34 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const MenuItemContainer = styled.div`
+const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] };
+
+const upAndIn = {
+  initial: {
+    y: 40,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 1},
+  },
+  exit: {
+    y: 40,
+    opacity: 0,
+    transition: {...transition}
+  }
+};
+
+export const MenuItemContainer = styled(motion.div).attrs(() => ({
+  variants: upAndIn, 
+  className: 'menuItem'}))`
     min-width: 30%;
     height: ${({ size }) => ( size ? '340px' : '240px')};
     flex: 1 1 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid black; */
     margin: 0 7.5px 15px;
     overflow: hidden;
     
